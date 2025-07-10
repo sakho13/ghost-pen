@@ -4,7 +4,8 @@
 
 ## アプリ概要
 
-`README.md` を参照しなさい。
+- VSCode の拡張機能です。
+- `README.md` を参照しなさい。
 
 ## コーディングルール
 
@@ -18,6 +19,8 @@
   - 例： `IUser`、`IUserRepository`
 - `interface` は `repository` のポリモフィズムを実現するために使用すること
   - データ構造を定義する場合は `type` を使用すること
+- 末尾にセミコロンはつけないこと
+- クラスメソッドの `public` や `private` は省略しないこと
 
 ### ディレクトリ
 
@@ -59,3 +62,9 @@
 - 開発ブランチは `develop` から派生させること
   - 開発ブランチ名は `(fix|feature|refactor)/(修正内容を英語で)`
     - 例： `fix/dictionary-map`, `feature/llm-assist-chat`
+
+## 最低限の要件
+
+- コードは TypeScript で書くこと
+- `npm run lint` で lint が通ること
+- `npm run test` でテストが通ること
