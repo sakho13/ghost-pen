@@ -21,6 +21,18 @@
   - データ構造を定義する場合は `type` を使用すること
 - 末尾にセミコロンはつけないこと
 - クラスメソッドの `public` や `private` は省略しないこと
+- パブリックメソッドには必ず TsDoc コメントをつけること
+  - 処理の内容を簡潔に記述すること
+  - 引数や戻り値の型は TsDoc の `@param` や `@returns` を使うこと
+  - `@example` をつけること
+- プライベートメソッドには必要に応じて TsDoc コメントをつけること
+  - 処理が複雑な場合など
+- グローバルな定数は `src/constant.ts` に定義すること
+  - 定数は `UPPER_SNAKE_CASE` を使うこと
+- `enum` の仕様は避けること
+  - `enum` の代わりに、 `type` や `as const` を組み合わせた型定義を使用すること
+- `any` 型は使用しないこと
+  - `any` の代わりに `unknown` 型を使用すること
 
 ### ディレクトリ
 
@@ -28,6 +40,7 @@
   - `src/` 直下と同じディレクトリ構造であること
 - `src/type` 型定義ディレクトリ
 - `src/lib/function` 単純な関数定義ディレクトリ
+- `src/lib/command` VSCode コマンド定義ディレクトリ
 - `src/lib/class` クラス定義ディレクトリ
 - `src/lib/service` ビジネスロジック定義ディレクトリ
 - `src/lib/repository` 外部連携定義ディレクトリ
@@ -65,6 +78,6 @@
 
 ## 最低限の要件
 
-- コードは TypeScript で書くこと
+- コードは原則 TypeScript で書くこと
 - `npm run lint` で lint が通ること
 - `npm run test` でテストが通ること
