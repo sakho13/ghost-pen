@@ -14,6 +14,10 @@
 - 配列の変数名は複数形を使うこと
   - list や array は使用不可
 - ディレクトリ名は単数形を使うこと
+- `interface` の接頭辞は `I` を使うこと
+  - 例： `IUser`、`IUserRepository`
+- `interface` は `repository` のポリモフィズムを実現するために使用すること
+  - データ構造を定義する場合は `type` を使用すること
 
 ### ディレクトリ
 
