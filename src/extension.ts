@@ -4,7 +4,6 @@ import { InitializeService } from './lib/service/initializeService';
 import { InitializeViewProvider } from './view/initializeViewProvider';
 
 export function activate(context: vscode.ExtensionContext): void {
-  console.log('ghost-pen extension activated');
 
   const initDisposable = vscode.commands.registerCommand('ghost-pen.initialize', () => {
     const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
