@@ -1,26 +1,32 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { ConfigRepository } from './lib/repository/configRepository';
+import { InitializeService } from './lib/service/initializeService';
+import { InitializeViewProvider } from './view/initializeViewProvider';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
+  console.log('ghost-pen extension activated');
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "ghost-pen" is now active!');
+  const initDisposable = vscode.commands.registerCommand('ghost-pen.initialize', () => {
+    const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    if (!workspacePath) {
+      vscode.window.showErrorMessage('ワークスペースが開かれていません');
+      return;
+    }
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('ghost-pen.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from ghost-pen!');
-	});
+    const repo = new ConfigRepository();
+    const service = new InitializeService(repo);
+    const result = service.initialize(workspacePath);
+    if (result.success) {
+      vscode.window.showInformationMessage(result.message);
+    } else {
+      vscode.window.showErrorMessage(result.message);
+    }
+  });
 
-	context.subscriptions.push(disposable);
+  const viewProvider = new InitializeViewProvider();
+  vscode.window.registerTreeDataProvider('ghostPenView', viewProvider);
+
+  context.subscriptions.push(initDisposable);
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate(): void {}
