@@ -46,4 +46,16 @@ export class ConfigRepository implements IConfigRepository {
   private _getGhostPenPath(workspacePath: string): string {
     return path.join(workspacePath, this._ghostPenDirName);
   }
+
+  /**
+   * ワークスペースが初期化済みか判定します
+   * @param workspacePath ワークスペースのパス
+   * @returns 初期化済みなら true
+   */
+  public isInitialized(workspacePath: string): boolean {
+    return (
+      this.hasGhostPenDirectory(workspacePath) &&
+      this.hasConfigFile(workspacePath)
+    );
+  }
 }

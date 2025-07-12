@@ -34,4 +34,11 @@ export interface IConfigRepository {
    * @returns 読み取った設定データ
    */
   readConfigFile(workspacePath: string): Config
+
+  /**
+   * ワークスペースが初期化済みかを確認します
+   * @param workspacePath ワークスペースのパス
+   * @returns 初期化済みならtrue、未初期化ならfalse
+   */
+  isInitialized(workspacePath: string): boolean
 }

@@ -82,6 +82,22 @@ suite("ConfigRepository Test Suite", () => {
     assert.deepStrictEqual(readConfig, config);
   });
 
+  test("isInitialized - config.jsonが存在する場合はtrueを返す", () => {
+    configRepository.createGhostPenDirectory(tempDir);
+    const config: Config = { configVersion: "0.0.1" };
+    configRepository.createConfigFile(tempDir, config);
+
+    const result = configRepository.isInitialized(tempDir);
+
+    assert.strictEqual(result, true);
+  });
+
+  test("isInitialized - 未初期化の場合はfalseを返す", () => {
+    const result = configRepository.isInitialized(tempDir);
+
+    assert.strictEqual(result, false);
+  });
+
   test("createGhostPenDirectory - 既存ディレクトリがある場合でもエラーにならない", () => {
     const ghostPenPath = path.join(tempDir, ".ghost-pen");
     fs.mkdirSync(ghostPenPath);

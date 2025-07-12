@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "ghost-pen.initialize",
-        "title": "Initialize Ghost Pen"
+        "title": "GhostPen: Initialize Workspace"
       }
     ],
     "viewsContainers": {
