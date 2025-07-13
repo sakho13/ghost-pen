@@ -67,6 +67,7 @@
 - コミットは [gitmoji](https://gitmoji.dev/) の分類に基づいて分けなさい
 - コミットは `(プレフィクス) (コミット内容)` の形式で切りなさい
   - 例： `✨ 単語辞書検索機能を追加`
+- コミットメッセージは日本語で書くこと
 
 ## ブランチ
 
@@ -75,9 +76,11 @@
 - 開発ブランチは `develop` から派生させること
   - 開発ブランチ名は `(fix|feature|refactor)/(修正内容を英語で)`
     - 例： `fix/dictionary-map`, `feature/llm-assist-chat`
+- ブランチ名は英語で書くこと
+  - 単語は `-` でつなぐこと
 
-## 最低限の要件
+## コード作成最低限の要件
 
 - コードは原則 TypeScript で書くこと
 - `npm run lint` で lint が通ること
-- `npm run test` でテストが通ること
+- `npm run test` でテストがすべて通ること
