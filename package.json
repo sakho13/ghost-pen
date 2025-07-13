@@ -9,15 +9,34 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:ghost-pen.initialize"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "ghost-pen.helloWorld",
-        "title": "Hello World"
+        "command": "ghost-pen.initialize",
+        "title": "GhostPen: Initialize Workspace"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ghost-pen",
+          "title": "Ghost Pen",
+          "icon": "media/ghost.svg"
+        }
+      ]
+    },
+    "views": {
+      "ghost-pen": [
+        {
+          "id": "ghostPenView",
+          "name": "Ghost Pen"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

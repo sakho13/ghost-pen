@@ -11,12 +11,9 @@ export function initializeCommand(): void {
   const result = initializeService.initialize(workspacePath);
 
   if (result.success) {
-    console.log(`✅ ${result.message}`);
-    if (result.isNewDirectory) {
-      console.log(`📁 作業ディレクトリ: ${workspacePath}`);
-    }
+    console.log(`✅ ${result.message}`)
   } else {
-    console.error(`❌ ${result.message}`);
-    process.exit(1);
+    console.error(`❌ ${result.message}`)
+    process.exit(1)
   }
 }
